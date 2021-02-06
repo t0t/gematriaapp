@@ -171,7 +171,7 @@ h1 {
         <button on:click|preventDefault={handleSubmit}>Go!</button>
       </form>
     </div>
-    <small>Copia/Pega o escribe letras hebreas: (p.e.: "אאאאא")</small>
+    <small>Copia/Pega o escribe letras hebreas: (p.e.: "בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ")</small>
   </section>
   <section>
     <small>By <a href="http://sergiofores.es">Sergio Forés</a></small>
