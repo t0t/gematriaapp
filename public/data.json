@@ -1,0 +1,22 @@
+[
+  {
+    "db": [
+      {
+        "id": 1,
+        "titulo": "Titulo 1",
+        "descripcion": "Lore cwehbc wkehcb wqk",
+        "url": "/grafico-uno.svg",
+        "color": "red",
+        "active": false
+      },
+      {
+        "id": 2,
+        "titulo": "Titulo 2",
+        "descripcion": "Lorem cwehbc wkehcb wqk",
+        "url": "/grafico-dos.svg",
+        "color": "blue",
+        "active": false
+      }
+    ]
+  }
+]
