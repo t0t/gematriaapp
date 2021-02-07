@@ -1,13 +1,7 @@
 <script>
   import Button from './components/Button.svelte'
   import Input from './components/Input.svelte';
-  import { emailValidator, requiredValidator } from './components/validators.js'
-  import { createFieldValidator } from './components/validation.js'
-
-  const [ validity, validate ] = createFieldValidator(requiredValidator(), emailValidator())
-	
-	let email = null
-
+  import Alert from './components/Alert.svelte';
 
   let gematria = new Map([
     ['\u05D0', 1], //'alef', '‎א'
@@ -192,6 +186,7 @@
     --fullwidth: 100%;
     --basepadding: 20px;
   }
+/* $: haserror = false */
 </style>
 
 <main>
@@ -209,10 +204,9 @@
         <Button variante="primary">Calcular!</Button>
         <label>בראשית ברא אלהים את השמים ואת הארץ (Génesis, 1)</label>
       </form>
-      {#if (haserror = true)}
-      {errormessage}
+      {#if (haserror == true)}
+      <Alert {haserror}> {errormessage} </Alert>
       {/if}
-      <small></small>
     </div>
   </section>
   <section>
