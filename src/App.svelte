@@ -1,6 +1,14 @@
 <script>
   import Button from './components/Button.svelte'
-  import Input from './components/Input.svelte'
+  import Input from './components/Input.svelte';
+  import { emailValidator, requiredValidator } from './components/validators.js'
+  import { createFieldValidator } from './components/validation.js'
+
+  const [ validity, validate ] = createFieldValidator(requiredValidator(), emailValidator())
+	
+	let email = null
+
+
   let gematria = new Map([
     ['\u05D0', 1], //'alef', '‎א'
     ['\u05D1', 2], //'bet', 'ב‎'
@@ -31,22 +39,17 @@
     ['\u05E5', 900], //'tzadi_sofit', 'ץ‎'
   ])
   let valorinput = "";
-  let valid = false;
-  let error = ""
+  let haserror = false;
+  let errormessage = ""
   let counter = 0
   let arrayASumar = []
   let splited = []
 
   function handleSubmit() {
-    valid = true;
     counter = 0;
     valorinput = valorinput;
     splited = valorinput.split('');
-
-    if ( typeof(valorinput) == "xx" ) {
-      valid=false;
-      error="deben ser letras hebreas"
-    }
+    errormessage = ""
     for (const s of splited) {
       if (s == '\u05D0') {
         counter += 1
@@ -102,23 +105,34 @@
         counter += 800
       } else if (s == '\u05E5') {
         counter += 900
+      } else {
+        haserror = true
+        if (haserror = true) {
+          errormessage= "Revisa tu texto. Recuerda que sólo admite carácteres hebreos"
+        } else {
+          haserror = false
+          errormessage = ""
+        }
       }
     }
-    return counter
-  }
+    
+    return counter;
+  };
 </script>
 
 <style type="text/scss">
   $color: #04ff00;
   $font_size: 2em;
+  $base_size: 2em;
 
   h1 {
     font-size: $font_size;
     padding: var(--basepadding);
   }
   h2 {
+    line-height: normal;
     font-size: $font_size * 4;
-    font-weight: normal;
+    font-weight: bold;
     padding-bottom: var(--basepadding);
   }
   small {
@@ -130,12 +144,11 @@
   }
   :global(html) {
     background-color: var(--primary);
-    height: 100vh;
+    /* height: 100vh; */
     font-size: 15px;
   }
   main {
-    margin: var(--basepadding);
-    padding: var(--basepadding);
+    line-height: 1.5;
     display: grid;
     grid-template-columns: 1fr;
     align-items: center;
@@ -144,12 +157,31 @@
     font-family: 'Montserrat', sans-serif;
   }
   .formulario {
-    margin-bottom: var(--basepadding);
+    margin-right: $base_size;
+    margin-bottom: $base_size;
+    margin-left: $base_size;
+  }
+  form {
+    display: grid;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "i b"
+    "l l"
+    ;
+    input { grid-area: "i"; border: 1px solid red;}
+    button { grid-area: "b";}
+    label { grid-area: "l"; grid-column: 1 / -1; margin-top: $base_size;}
   }
 
   a {
     text-decoration: none;
     color: var(--secondary);
+  }
+  h3 {
+    color: var(--secondary);
+    font-size: 1.5em;
+    margin-bottom: $base_size;
   }
 
   :root {
@@ -165,23 +197,29 @@
 <main>
   <header>
     <h1>Gematria App</h1>
+    <h3>Lo que valen las palabras hebreas</h3>
   </header>
   <section>
     <h2>{counter}</h2>
     <div class="formulario">
-      <form on:submit|preventDefault={handleSubmit}>
-        
+      <form 
+      name="myForm"
+      on:submit|preventDefault={handleSubmit}>
         <Input bind:value={valorinput}/>
-
-        <Button variante="primary">Go!</Button>
+        <Button variante="primary">Calcular!</Button>
+        <label>בראשית ברא אלהים את השמים ואת הארץ (Génesis, 1)</label>
       </form>
+      {#if (haserror = true)}
+      {errormessage}
+      {/if}
+      <small></small>
     </div>
-    <small>Copia/Pega o escribe letras hebreas: (p.e.: "אאאאא")</small>
   </section>
   <section>
     <small>
-      By
-      <a href="http://sergiofores.es">Sergio Forés</a>
+      Creado en JS, Html, Sass con Svelte por
+      <a href="http://sergiofores.es" target="_blank">Sergio Forés</a><br>
+      <a href="https://tanach.us/Server.txt?Genesis*&content=Consonants" target="_blank">Codex de Leningrado</a>
     </small>
   </section>
 </main>

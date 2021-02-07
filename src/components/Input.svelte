@@ -1,6 +1,6 @@
 <script>
 export let value = "";
-export let placeholder = "Introduce texto";
+export let placeholder = 'p.e: "בראשית"';
 const onInput = e => (value = e.target.value);
 </script>
 

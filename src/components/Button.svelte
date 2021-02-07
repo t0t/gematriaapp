@@ -7,8 +7,7 @@
   button {
     font-size: 2em;
     padding: var(--basepadding);
-    background-color: var(--black);
-    color: var(--secondary);
+    border: none;
   }
   button:hover {
     cursor: pointer;
@@ -16,17 +15,17 @@
     color: var(--black);
   }
   .primary {
-    color: var(--black);
     border-top-right-radius: var(--basepadding);
     border-bottom-right-radius: var(--basepadding);
-    background-color: var(--white);
+    background-color: var(--black);
+    color: var(--secondary);
   }
   .secondary {
     color: var(--white);
     background-color: var(--black);
   }
   .bordered {
-    border: none;
+    border: 1px solid black;
   }
 </style>
 
