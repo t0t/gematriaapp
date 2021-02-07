@@ -164,8 +164,7 @@ h1 {
     <h2>{counter}</h2>
     <div class="formulario">
       <form on:submit|preventDefault={handleSubmit}>
-        <label for="calltoaction">Introduce letras hebreas:</label>
-        <input type="text" on:focus={value==0}
+        <input  
         placeholder="p.e.: ששש‎" 
         bind:value={txtmedido}
         />
