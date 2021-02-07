@@ -38,8 +38,9 @@
   let counter = 0
   let arrayASumar = []
   let splited = []
-
+  
   function handleSubmit() {
+    haserror = false;
     counter = 0;
     valorinput = valorinput;
     splited = valorinput.split('');
@@ -205,7 +206,7 @@
         <label>בראשית ברא אלהים את השמים ואת הארץ (Génesis, 1)</label>
       </form>
       {#if (haserror == true)}
-      <Alert {haserror}> {errormessage} </Alert>
+      <Alert txt> {errormessage} </Alert>
       {/if}
     </div>
   </section>
