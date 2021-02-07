@@ -7,7 +7,6 @@
     color: var(--black);
     padding: 20px;
     display: none;
-    /* transition: all 1s linear; */
     position: relative;
   }
   .haserror {
@@ -16,7 +15,6 @@
     border-top-width: 2px;
     border-bottom-width: 2px;
     border-top-style: dashed;
-    /* border-bottom-width: 2px; */
     border-top-style: dashed;
     border-bottom-style: dashed;
     border-top-color: var(--destacado_light);

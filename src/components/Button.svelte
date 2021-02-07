@@ -8,7 +8,6 @@
     font-size: 1.5em;
     padding: var(--basepadding);
     border: none;
-    /* max-width: 100px; */
     margin-left: -3px;
   }
   button:hover {

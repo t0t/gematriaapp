@@ -106,7 +106,7 @@
         haserror = true
         if ((haserror = true)) {
           errormessage =
-            'Revisa tu texto. Recuerda que sólo admite carácteres hebreos'
+            'Si tu texto contiene vocales hebreas o cualquier otro signo éste programa los ignora.Recuerda que en Gematria sólo contabilizan las consonantes hebreas. '
         } else {
           haserror = false
           errormessage = ''
