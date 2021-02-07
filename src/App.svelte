@@ -1,7 +1,7 @@
 <script>
   import Button from './components/Button.svelte'
-  import Input from './components/Input.svelte';
-  import Alert from './components/Alert.svelte';
+  import Input from './components/Input.svelte'
+  import Alert from './components/Alert.svelte'
 
   let gematria = new Map([
     ['\u05D0', 1], //'alef', '‎א'
@@ -32,19 +32,19 @@
     ['\u05E3', 800], //'pe_sofit', 'ף‎'
     ['\u05E5', 900], //'tzadi_sofit', 'ץ‎'
   ])
-  let valorinput = "";
-  let haserror = false;
-  let errormessage = ""
+  let valorinput = ''
+  let haserror = false
+  let errormessage = ''
   let counter = 0
   let arrayASumar = []
   let splited = []
-  
+
   function handleSubmit() {
-    haserror = false;
-    counter = 0;
-    valorinput = valorinput;
-    splited = valorinput.split('');
-    errormessage = ""
+    haserror = false
+    counter = 0
+    valorinput = valorinput
+    splited = valorinput.split('')
+    errormessage = ''
     for (const s of splited) {
       if (s == '\u05D0') {
         counter += 1
@@ -100,38 +100,42 @@
         counter += 800
       } else if (s == '\u05E5') {
         counter += 900
+      } else if (s == ' ') {
+        counter += 0
       } else {
         haserror = true
-        if (haserror = true) {
-          errormessage= "Revisa tu texto. Recuerda que sólo admite carácteres hebreos"
+        if ((haserror = true)) {
+          errormessage =
+            'Revisa tu texto. Recuerda que sólo admite carácteres hebreos'
         } else {
           haserror = false
-          errormessage = ""
+          errormessage = ''
         }
       }
     }
-    
-    return counter;
-  };
+
+    return counter
+  }
 </script>
 
 <style type="text/scss">
-  $color: #04ff00;
   $font_size: 2em;
   $base_size: 2em;
 
   h1 {
+    color: var(--secondary);
     font-size: $font_size;
     padding: var(--basepadding);
   }
   h2 {
+    color: var(--black);
     line-height: normal;
     font-size: $font_size * 4;
     font-weight: bold;
     padding-bottom: var(--basepadding);
   }
   small {
-    color: var(--white);
+    /* color: var(--white); */
     display: block;
     font-size: 1em;
     margin: var(--basepadding);
@@ -148,7 +152,7 @@
     grid-template-columns: 1fr;
     align-items: center;
     text-align: center;
-    color: $color;
+    color: var(--secondary);
     font-family: 'Montserrat', sans-serif;
   }
   .formulario {
@@ -158,36 +162,48 @@
   }
   form {
     display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
-    "i b"
-    "l l"
-    ;
-    input { grid-area: "i"; border: 1px solid red;}
-    button { grid-area: "b";}
-    label { grid-area: "l"; grid-column: 1 / -1; margin-top: $base_size;}
+    grid-template-areas:
+      'i b'
+      'l l';
+    input {
+      grid-area: 'i';
+    }
+    button {
+      grid-area: 'b';
+    }
+    label {
+      grid-area: 'l';
+      grid-column: 1 / -1;
+      margin-top: $base_size;
+    }
   }
 
   a {
     text-decoration: none;
     color: var(--secondary);
+    &:hover {
+      color: var(--black);
+    }
   }
   h3 {
     color: var(--secondary);
     font-size: 1.5em;
     margin-bottom: $base_size;
   }
-
+  ::selection {
+    color: var(--black);
+    background: var(--destacado_light);
+  }
   :root {
-    --primary: #333;
+    --primary: whitesmoke;
     --secondary: rgb(155, 155, 155);
     --black: rgb(0, 0, 0);
     --white: rgb(222, 222, 222);
+    --destacado: #2b2bff;
+    --destacado_light: #ff9698;
     --fullwidth: 100%;
     --basepadding: 20px;
   }
-/* $: haserror = false */
 </style>
 
 <main>
@@ -198,23 +214,26 @@
   <section>
     <h2>{counter}</h2>
     <div class="formulario">
-      <form 
-      name="myForm"
-      on:submit|preventDefault={handleSubmit}>
-        <Input bind:value={valorinput}/>
-        <Button variante="primary">Calcular!</Button>
+      <form name="myForm" on:submit|preventDefault={handleSubmit}>
+        <Input bind:value={valorinput} />
+        <Button variante="primary">Run</Button>
         <label>בראשית ברא אלהים את השמים ואת הארץ (Génesis, 1)</label>
       </form>
-      {#if (haserror == true)}
-      <Alert txt> {errormessage} </Alert>
+      {#if haserror == true}
+        <Alert>{errormessage}</Alert>
       {/if}
     </div>
   </section>
   <section>
     <small>
       Creado en JS, Html, Sass con Svelte por
-      <a href="http://sergiofores.es" target="_blank">Sergio Forés</a><br>
-      <a href="https://tanach.us/Server.txt?Genesis*&content=Consonants" target="_blank">Codex de Leningrado</a>
+      <a href="http://sergiofores.es" target="_blank">Sergio Forés</a>
+      <br />
+      <a
+        href="https://tanach.us/Server.txt?Genesis*&content=Consonants"
+        target="_blank">
+        Codex de Leningrado
+      </a>
     </small>
   </section>
 </main>
