@@ -123,58 +123,65 @@
   $base_size: 2em;
 
   h1 {
-    color: var(--secondary);
+    color: var(--black);
     font-size: $font_size;
-    padding: var(--basepadding);
   }
   h2 {
     color: var(--black);
     line-height: normal;
     font-size: $font_size * 4;
     font-weight: bold;
-    padding-bottom: var(--basepadding);
+  }
+  h3 {
+    color: var(--black);
+    /* font-size: 1.5em; */
+    margin-bottom: $base_size;
   }
   small {
-    /* color: var(--white); */
     display: block;
     font-size: 1em;
     margin: var(--basepadding);
-    /* color: var(--white); */
   }
   :global(html) {
     background-color: var(--primary);
-    /* height: 100vh; */
     font-size: 15px;
   }
+  header {
+    /* background-color: green; */
+  }
   main {
+    height: 100vh;
+    /* background-color: red; */
     line-height: 1.5;
     display: grid;
     grid-template-columns: 1fr;
-    align-items: center;
+    align-content: center;
+    justify-items: center;
     text-align: center;
     color: var(--secondary);
     font-family: 'Montserrat', sans-serif;
   }
-  .formulario {
-    margin-right: $base_size;
-    margin-bottom: $base_size;
-    margin-left: $base_size;
+  footer {
+    /* background-color: blue; */
   }
+  section {
+    /* background-color: yellow; */
+  }
+  
   form {
     display: grid;
-    grid-template-areas:
-      'i b'
-      'l l';
+    max-width: 600px;
+    grid-template-columns: 1fr 0.5fr;
+    grid-template-areas:'i b';
+    justify-content: center;
+    align-content: center;
+    /* border: 1px solid red; */
     input {
       grid-area: 'i';
     }
     button {
       grid-area: 'b';
-    }
-    label {
-      grid-area: 'l';
-      grid-column: 1 / -1;
-      margin-top: $base_size;
+      /* width: 100%; */
     }
   }
 
@@ -185,11 +192,7 @@
       color: var(--black);
     }
   }
-  h3 {
-    color: var(--secondary);
-    font-size: 1.5em;
-    margin-bottom: $base_size;
-  }
+  
   ::selection {
     color: var(--black);
     background: var(--destacado_light);
@@ -198,7 +201,7 @@
     --primary: whitesmoke;
     --secondary: rgb(155, 155, 155);
     --black: rgb(0, 0, 0);
-    --white: rgb(222, 222, 222);
+    --white: rgb(255, 255, 255);
     --destacado: #2b2bff;
     --destacado_light: #ff9698;
     --fullwidth: 100%;
@@ -213,18 +216,16 @@
   </header>
   <section>
     <h2>{counter}</h2>
-    <div class="formulario">
       <form name="myForm" on:submit|preventDefault={handleSubmit}>
         <Input bind:value={valorinput} />
-        <Button variante="primary">Run</Button>
-        <label>בראשית ברא אלהים את השמים ואת הארץ (Génesis, 1)</label>
+        <Button variante="primary">run &gt;</Button>
       </form>
       {#if haserror == true}
         <Alert>{errormessage}</Alert>
       {/if}
-    </div>
   </section>
-  <section>
+  <footer>
+    <small>בראשית ברא אלהים את השמים ואת הארץ (Génesis, 1)</small>
     <small>
       Creado en JS, Html, Sass con Svelte por
       <a href="http://sergiofores.es" target="_blank">Sergio Forés</a>
@@ -235,5 +236,5 @@
         Codex de Leningrado
       </a>
     </small>
-  </section>
+  </footer>
 </main>

@@ -1,6 +1,6 @@
 <script>
   export let value = ''
-  export let placeholder = 'p.e.: "בראשית"'
+  export let placeholder = '"...בראשית ברא אלהים"'
   const onInput = (e) => (value = e.target.value)
 </script>
 
@@ -12,21 +12,19 @@
     font-size: 2em;
     padding: var(--basepadding);
     border: none;
-    transition: ease-in-out 5s ease-in-out;
+    background-color: #e5e5e5;
     &:focus-within {
-      background-color: var(--secondary);
+      background-color: var(--white);
       color: var(--black);
       &::placeholder {
         color: transparent;
       }
     }
-    /* &::placeholder {
-        color: blue;
-    } */
-  }
-  input {
     border-top-left-radius: var(--basepadding);
     border-bottom-left-radius: var(--basepadding);
+    &::placeholder {
+        color: var(--secondary);
+    }
   }
 </style>
 

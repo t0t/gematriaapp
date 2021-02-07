@@ -11,8 +11,16 @@
     position: relative;
   }
   .haserror {
+    margin-top: var(--basepadding);
     display: block;
-    background-color: var(--destacado_light);
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-top-style: dashed;
+    /* border-bottom-width: 2px; */
+    border-top-style: dashed;
+    border-bottom-style: dashed;
+    border-top-color: var(--destacado_light);
+    border-bottom-color: var(--destacado_light);
     animation-name: show_error;
     animation-duration: .3s;
     animation-fill-mode: backwards;
