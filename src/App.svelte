@@ -85,7 +85,7 @@ h1 {
   }
   h2 {
     font-size: $font_size*4;
-    font-weight: 900;
+    font-weight: normal;
     padding-bottom: var(--basepadding);
   }
   h1,
@@ -134,7 +134,6 @@ h1 {
     border-bottom-right-radius: var(--basepadding);
     background-color: var(--black);
     color: var(--secondary);
-    margin-left: -3px;
   }
   button:hover {
     cursor: pointer;
@@ -165,14 +164,15 @@ h1 {
     <h2>{counter}</h2>
     <div class="formulario">
       <form on:submit|preventDefault={handleSubmit}>
-        <input  
+        <label for="calltoaction">Introduce letras hebreas:</label>
+        <input type="text" on:focus={value==0}
         placeholder="p.e.: ששש‎" 
         bind:value={txtmedido}
         />
         <button on:click|preventDefault={handleSubmit}>Go!</button>
       </form>
     </div>
-    <small>Copia/Pega o escribe letras hebreas: (p.e.: "בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ")</small>
+    <small>Copia/Pega o escribe letras hebreas: (p.e.: "אאאאא")</small>
   </section>
   <section>
     <small>By <a href="http://sergiofores.es">Sergio Forés</a></small>
