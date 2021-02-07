@@ -218,7 +218,7 @@
     <h2>{counter}</h2>
       <form name="myForm" on:submit|preventDefault={handleSubmit}>
         <Input bind:value={valorinput} />
-        <Button variante="primary">run &gt;</Button>
+        <Button variante="primary">Go!</Button>
       </form>
       {#if haserror == true}
         <Alert>{errormessage}</Alert>
