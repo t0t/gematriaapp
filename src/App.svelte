@@ -85,7 +85,7 @@ h1 {
   }
   h2 {
     font-size: $font_size*4;
-    font-weight: normal;
+    font-weight: 900;
     padding-bottom: var(--basepadding);
   }
   h1,
@@ -134,6 +134,7 @@ h1 {
     border-bottom-right-radius: var(--basepadding);
     background-color: var(--black);
     color: var(--secondary);
+    margin-left: -3px;
   }
   button:hover {
     cursor: pointer;
